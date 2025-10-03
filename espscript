@@ -1,0 +1,39 @@
+vol 25
+tft.setup(0, 0, 0)
+tft.text.color(1234)
+tft.text.font(4)
+tft.cls()
+tft.text.size(1)
+tft.text.cursor(0,0)
+tft.println("UDP Radio - A User Hack")
+tft.println("Agent's is comming up,")
+tft.print("soon...")
+
+
+
+freq 146
+RX
+am
+delay 1000
+freq 3573
+usb
+
+port = 8080
+print "UDP-Server "&ip()&":"&port
+udpbegin port
+udpbranch client
+textbox clientmsg
+wait
+
+client:
+clientmsg = udpread()
+tft.cls()
+tft.text.size(1)
+tft.text.cursor(0,0)
+tft.println("UDP Radio - A User Hack")
+tft.println("")
+tft.print("Agent QRG: ") 
+tft.println(clientmsg) 
+freq clientmsg
+udpreply "OK"
+return
