@@ -1,20 +1,23 @@
+  Run  File  Edit  Options || Vars  Debug  Stop ..
+/default.bas
+ 
+Save  
+Saved
+
 vol 25
 tft.setup(0, 0, 0)
-tft.text.color(1234)
-tft.text.font(4)
-tft.cls()
-tft.text.size(1)
-tft.text.cursor(0,0)
-tft.println("UDP Radio - A User Hack")
-tft.println("Agent's is comming up,")
-tft.print("soon...")
-
-
+tft.bmp("/uploads/bild.jpg", 0, 0, 2220) 
+tft.text.color(grey)
+tft.text.font(2)
+tft.text.size(2)
+tft.text.cursor(0,50)
+tft.println("Be patient. Agent is")
+tft.println("comming up, soon.")
 
 freq 146
 RX
 am
-delay 1000
+delay 3000
 freq 3573
 usb
 
@@ -26,14 +29,12 @@ textbox clientmsg
 wait
 
 client:
+tft.bmp("/uploads/bild.jpg", 0, 0, 2220) 
 clientmsg = udpread()
-tft.cls()
-tft.text.size(1)
-tft.text.cursor(0,0)
-tft.println("UDP Radio - A User Hack")
-tft.println("")
-tft.print("Agent QRG: ") 
-tft.println(clientmsg) 
+tft.text.cursor(0,50)
+tft.println("Agent orders butter on") 
+tft.print(clientmsg) 
 freq clientmsg
 udpreply "OK"
 return
+
